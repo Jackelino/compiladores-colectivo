@@ -83,7 +83,7 @@ public class SLR1 {
         do {
             s = pila[tope];
             z = m[Integer.parseInt(s)][getTerminal(a)];
-            System.out.println("s=[" + s + "]" + " a=[" + a + "]" + "z=[" + z + "]");
+            //System.out.println("s=[" + s + "]" + " a=[" + a + "]" + "z=[" + z + "]");
             if (z == 3000) { // igual al final del archivo "eof"
                 System.out.println("Código generado: ");
                 System.out.println("Felicidades, Analisis sintactico correcto.");
@@ -166,7 +166,7 @@ public class SLR1 {
         t[27]="meni";
         t[28]="igual";
         t[29]="dif";
-        t[30]="fin";
+        t[30]="eof";
     }
 
     /**
