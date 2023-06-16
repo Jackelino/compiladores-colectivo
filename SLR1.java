@@ -63,6 +63,11 @@ public class SLR1 {
 
     static String pila[] = new String[10000];
 
+    /**
+     * Contador para la creación de variables
+     */
+    static int contVariable = 0;
+
 
 
      public static void main(String argumento[]) {
@@ -819,5 +824,16 @@ public class SLR1 {
         for (int i = 0; i <= tope; i++) {
              System.out.println(tope);
         }
+    }
+
+    /**
+     * Genera y devuelve un nombre unico de 
+     * una variable: V0, V1, V2, V3, ..., Vn
+     */
+    public static String GenVar(){
+        String variable = "V";
+        variable = variable + String.valueOf(contVariable);
+        contVariable += 1;
+        return variable;
     }
 }
