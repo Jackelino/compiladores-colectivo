@@ -73,6 +73,10 @@ public class SLR1 {
      */
     static int contEtiqueta = 0;
 
+    static float temp1:
+    
+    static int tipo = 9;
+
 
 
      public static void main(String argumento[]) {
@@ -131,7 +135,10 @@ public class SLR1 {
      * @param R
      */
     public static void COD_REDUCE(int R) {
-       
+       if(shift == 32){
+			temp1 = Float.parseFloat(LEX);
+		}
+		
     }
 
     /**
