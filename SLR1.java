@@ -67,6 +67,11 @@ public class SLR1 {
      * Contador para la creación de variables
      */
     static int contVariable = 0;
+    
+    /**
+     * Contador para la creación de etiquetas
+     */
+    static int contEtiqueta = 0;
 
 
 
@@ -835,5 +840,16 @@ public class SLR1 {
         variable = variable + String.valueOf(contVariable);
         contVariable += 1;
         return variable;
+    }
+
+    /**
+     * Genera y devuelve un nombre unico de 
+     * una etiqueta: E0, E1, E2, E3, ..., En
+     */
+    public static String GenEtq(){
+        String etiqueta = "E";
+        etiqueta = etiqueta + String.valueOf(contEtiqueta);
+        contEtiqueta += 1;
+        return etiqueta;
     }
 }
