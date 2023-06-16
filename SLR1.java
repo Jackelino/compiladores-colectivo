@@ -148,7 +148,7 @@ public class SLR1 {
      * @param R
      */
     public static void COD_REDUCE(int R) {
-       
+		
     }
 
     /**
