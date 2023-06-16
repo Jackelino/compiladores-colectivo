@@ -75,7 +75,7 @@ public class SLR1 {
 
     static float temp1:
     
-    static int tipo = 9;
+    static int tipo = 0;
 
 
 
