@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class SLR1 {
     /**
@@ -73,7 +74,11 @@ public class SLR1 {
      */
     static int contEtiqueta = 0;
 
-
+    /**
+     * Arreglos para la tabla de simbolos
+     */
+    static ArrayList<String> variables = new ArrayList<>();
+    static ArrayList<String> tipos = new ArrayList<>();
 
      public static void main(String argumento[]) {
         int z = 0;
@@ -83,6 +88,18 @@ public class SLR1 {
             System.out.println("El archivo: " + entrada + " no existe,");
             System.exit(4);
         }
+        ///
+        System.out.println("Prueba de la tabla de simbolos");
+        Agr_tab("hola_1", "entero");
+        Agr_tab("hola", "decimal");
+        Agr_tab("x", "entero");
+        Agr_tab("c", "entero");
+        Agr_tab("t", "decimal");
+        System.out.println("El tipo de variable: hola_1 es: " + obtenTipo("hola_1"));
+        System.out.println("El tipo de variable: t es: " + obtenTipo("t"));
+        System.out.println("El tipo de variable: hola es: " + ChkTipo("hola","hola"));
+
+        /////
         initTerminales();
         initNoTerminales();
         initPorducionesIzquierda();
@@ -851,5 +868,84 @@ public class SLR1 {
         etiqueta = etiqueta + String.valueOf(contEtiqueta);
         contEtiqueta += 1;
         return etiqueta;
+    }
+
+    /**
+     * Varifica si la variable esta declarada en la tabla
+     * de simbolos, si existe devuelve la posición
+     * @param variable
+     * @return
+     */
+    public static int existeVariable(String variable){
+        for(int i = 0; i< variables.size(); i++) {
+            if(variables.get(i).equals(variable)) {
+                return i;
+            }
+        }
+        return -1;
+
+    }
+
+    /**
+     * Busca la variable en la tabla de simbolos y marca error si no existe y aborta, 
+     * Si existe, devuelve entero o decimal en funcion de la tabla.
+     * @param variable
+     * @return
+     */
+    public static String obtenTipo(String variable){
+        int posicion = existeVariable(variable);
+         if(posicion == -1){
+             System.out.println("La variable: "+ variable + ", no esta declarada.");
+            System.exit(4);
+        } else {
+            return tipos.get(posicion);
+        }
+
+        return null;
+    }
+
+    /**
+     * Busca variable en la tabla de simbolos, si existe marca variable duplicada
+     * y aborta. Si no existe agrega la variable a la tabla y le asigna el tipo.
+     * @param variable
+     * @param tipo
+     */
+    public static void Agr_tab(String variable, String tipo) {
+        if(existeVariable(variable) > -1){
+             System.out.println("La variable: "+ variable + ", esta duplicada.");
+             System.exit(4);
+        } else {
+            variables.add(variable);
+            tipos.add(tipo);
+        }
+    }
+
+    /**
+     * Compara A con B, si son diferentes aborta 
+     * y si son iguales devuelve el tipo.
+     * @param variableA
+     * @param variableB
+     * @return
+     */
+    public static String ChkTipo(String variableA, String variableB){
+        if(variableA.equals(variableB)){
+            return obtenTipo(variableA);
+        }
+        System.exit(4);
+        return null;
+    }
+
+    /**
+     * Toma el prefijo de la instruccion A (SUM, MUL, DIV, SUB), 
+     * si B es decimal le concatena F, si es entero le concatena E.
+     * @param A - instruccion
+     * @param B - variable
+     */
+    public static String instAri(String A, String B) {
+        if(obtenTipo(B) == "decimal"){
+            return A + "F";
+        } else {
+            return A + "E";
+        }
     }
 }
