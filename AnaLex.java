@@ -559,6 +559,7 @@ public class AnaLex{
 			a_i = a_a;
 		}while(!fin_archivo);
 		creaEscribeArchivo(xArchivo(salida), "eof");
+		creaEscribeArchivo(xArchivo(salida), "eof");
 		creaEscribeArchivo(xArchivo(salida), "666");
 		System.out.println("Analisis Lexico Correcto"); 
 	}
