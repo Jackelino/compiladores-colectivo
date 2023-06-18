@@ -83,7 +83,7 @@ public class pequeSLR1Proyecto {
     static ArrayList<String> variables = new ArrayList<>();
     static ArrayList<String> tipos = new ArrayList<>();
 
-     public static void main(String argumento[]) {
+    public static void main(String argumento[]) {
         int z = 0;
         int w = 0;
         entrada = argumento[0] + ".sal";
